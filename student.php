@@ -16,7 +16,7 @@ $password = "61673";
 $db="demo";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
-$query ="SELECT coursename FROM courses";
+$query ="SELECT CourseName FROM courses";
 
 $result = $conn->query($query);
 if($result->num_rows> 0){
@@ -42,25 +42,25 @@ if($result->num_rows> 0){
                     <p>Fill out this form to get in touch with a mentor to pave your career towards success</p>
                 </div>
             </div>
-            <form class="p-3 p-xl-4" method="post">
+            <form class="p-3 p-xl-4" method="post" action="result.php">
                 <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name"></div>
                 <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Course Name"></div>
                 <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6" placeholder="About Yourself"></textarea></div>
                 <div>
-                <select name="courseName" class="formbold-form-input">
+                <select name="cs" class="formbold-form-input">
                     <option>Select Course</option>
                     <?php 
                     foreach ($options as $option) {
                     ?>
-                      <option><?php echo $option['coursename']; ?> </option>
-                      <?php 
+                      <option name="course" value="<?php echo $option['CourseName']; ?>"><?php echo $option['CourseName']; ?> </option>
+                    <?php 
                       }
                     ?>
-                   </select>
+                  </select>
                 </div>
                 <br>
                 <br>
-                <div><button class="btn btn-primary d-block w-100" type="submit">Submit</button></div>
+                <div><button class="btn btn-primary d-block w-100" type="submit" value="submit" name="submit">Submit</button></div>
             </form>
               <style>
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -113,6 +113,7 @@ if($result->num_rows> 0){
         </div>
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <
 </body>
 
 </html>
